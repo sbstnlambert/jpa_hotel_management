@@ -38,5 +38,10 @@ public class Room {
     private Hotel hotel;
 
     @ManyToMany
+    @JoinTable(
+            name = "visitor",
+            joinColumns = @JoinColumn(name = "room_id"),
+            inverseJoinColumns = @JoinColumn(name = "visitor_id")
+    )
     private List<Client> clients = new ArrayList<>();
 }
