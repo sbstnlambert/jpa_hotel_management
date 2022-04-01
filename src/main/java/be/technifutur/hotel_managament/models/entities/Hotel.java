@@ -27,4 +27,7 @@ public class Hotel {
 
     @Column(nullable = false)
     private String address;
+
+    @OneToOne
+    private Manager owner;
 }

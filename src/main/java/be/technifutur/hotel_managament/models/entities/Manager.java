@@ -26,4 +26,7 @@ public class Manager {
     @Column(nullable = true, updatable = false, columnDefinition = "DATE")
     private LocalDate beginCareerOn;
 
+    @OneToOne(mappedBy = "owner")
+    private Hotel hotel;
+
 }
