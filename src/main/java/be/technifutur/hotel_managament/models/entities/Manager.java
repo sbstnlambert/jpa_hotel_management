@@ -23,7 +23,7 @@ public class Manager {
     @Column(nullable = false, name = "manager_name")
     private String name;
 
-    @Column(nullable = true, columnDefinition = "DATE")
+    @Column(nullable = true, updatable = false, columnDefinition = "DATE")
     private LocalDate beginCareerOn;
-    
+
 }
