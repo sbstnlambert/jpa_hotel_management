@@ -33,4 +33,7 @@ public class Room {
 
     @OneToOne(mappedBy = "room")
     private Hotel hotel;
+
+    @ManyToMany
+    private Client client;
 }

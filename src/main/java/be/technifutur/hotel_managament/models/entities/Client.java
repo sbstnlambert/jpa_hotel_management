@@ -24,4 +24,7 @@ public class Client {
 
     @Column(nullable = false, name = "client_surname")
     private String surname;
+
+    @ManyToMany(mappedBy = "client")
+    private Room room;
 }
