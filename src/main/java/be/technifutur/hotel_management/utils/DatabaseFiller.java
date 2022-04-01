@@ -1,7 +1,7 @@
-package be.technifutur.hotel_managament.utils;
+package be.technifutur.hotel_management.utils;
 
-import be.technifutur.hotel_managament.models.entities.Hotel;
-import be.technifutur.hotel_managament.repositories.HotelRepository;
+import be.technifutur.hotel_management.models.entities.Hotel;
+import be.technifutur.hotel_management.repositories.HotelRepository;
 import org.springframework.beans.factory.InitializingBean;
 
 public class DatabaseFiller implements InitializingBean {

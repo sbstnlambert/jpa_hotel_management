@@ -1,4 +1,4 @@
-package be.technifutur.hotel_managament.models.entities;
+package be.technifutur.hotel_management.models.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
