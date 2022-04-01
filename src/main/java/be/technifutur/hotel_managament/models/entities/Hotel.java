@@ -30,4 +30,7 @@ public class Hotel {
 
     @OneToOne
     private Manager owner;
+
+    @OneToOne
+    private Room room;
 }
