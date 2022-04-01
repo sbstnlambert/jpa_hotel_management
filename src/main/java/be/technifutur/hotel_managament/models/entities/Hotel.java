@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -39,5 +40,5 @@ public class Hotel {
     private Manager owner;
 
     @OneToMany(mappedBy = "hotel")
-    private List<Room> rooms;
+    private List<Room> rooms = new ArrayList<>();
 }
