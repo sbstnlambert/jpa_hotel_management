@@ -6,25 +6,24 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "hotel")
-public class Hotel {
+@Table(name = "manager")
+public class Manager {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(nullable = false)
-    private byte starNumber;
-
-    @Column(nullable = false, name = "hotel_name")
+    @Column(nullable = false, name = "manager_name")
     private String name;
 
-    @Column(nullable = false)
-    private String address;
+    @Column(nullable = true, columnDefinition = "DATE")
+    private LocalDate beginCareerOn;
+    
 }
