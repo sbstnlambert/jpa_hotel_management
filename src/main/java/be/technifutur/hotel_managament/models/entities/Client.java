@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -26,6 +27,6 @@ public class Client {
     @Column(nullable = false, name = "client_surname")
     private String surname;
 
-    @ManyToMany(mappedBy = "client")
-    private List<Room> rooms;
+    @ManyToMany(mappedBy = "clients")
+    private List<Room> rooms = new ArrayList<>();
 }
