@@ -20,13 +20,16 @@ public class Manager {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(nullable = false, name = "manager_name")
+    @Column(nullable = false, name = "manager_name", length = 50)
     private String name;
+
+    @Column(nullable = false, name = "manager_name", length = 50)
+    private String surname;
 
     @Column(nullable = true, updatable = false, columnDefinition = "DATE")
     private LocalDate beginCareerOn;
 
     @OneToOne(mappedBy = "owner")
-    private Hotel hotel;
+    private Hotel manage;
 
 }
