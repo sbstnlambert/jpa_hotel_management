@@ -37,7 +37,9 @@ public class Hotel {
 
     @OneToOne
     // JointColumn Permet d'avoir le contrôle sur le nom de la ForeignKey
-    @JoinColumn(name = "manager_id", foreignKey = @ForeignKey(name = "FK_HOTEL_MANAGER_ID"))
+    @JoinColumn(
+            name = "manager_id",
+            foreignKey = @ForeignKey(name = "FK_HOTEL_MANAGER_ID"))
     private Manager owner;
 
     @OneToMany(mappedBy = "hotel")
