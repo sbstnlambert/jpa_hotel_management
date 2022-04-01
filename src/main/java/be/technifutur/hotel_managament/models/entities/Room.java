@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -17,24 +18,25 @@ import java.util.List;
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "roomNumber", nullable = false)
+    @Column(name = "room_number", nullable = false)
     private Long id;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private boolean hasTelevision;
 
     @Column(nullable = false)
     private boolean hasKitchen;
 
-    @Column(nullable = true)
+    @Column(nullable = false, name = "has_minibar")
     private boolean hasMiniBar;
 
-    @Column(nullable = false)
-    private int price;
+    // precision = nombre de chiffres après la virgule du float
+    @Column(nullable = false, precision = 2)
+    private float price;
 
-    @OneToOne(mappedBy = "room")
+    @ManyToOne
     private Hotel hotel;
 
     @ManyToMany
-    private List<Client> clients;
+    private List<Client> clients = new ArrayList<>();
 }
