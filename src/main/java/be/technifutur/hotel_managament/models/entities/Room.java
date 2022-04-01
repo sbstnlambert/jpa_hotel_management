@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,5 +36,5 @@ public class Room {
     private Hotel hotel;
 
     @ManyToMany
-    private Client client;
+    private List<Client> clients;
 }

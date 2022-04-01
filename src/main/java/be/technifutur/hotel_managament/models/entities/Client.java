@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,5 +27,5 @@ public class Client {
     private String surname;
 
     @ManyToMany(mappedBy = "client")
-    private Room room;
+    private List<Room> rooms;
 }
