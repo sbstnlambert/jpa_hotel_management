@@ -22,8 +22,7 @@ public class Hotel {
     private Long id;
 
     @Column(
-            nullable = false,
-            columnDefinition = "INT NOT NULL CHECK (star_number BETWEEN 1 AND 5",
+            columnDefinition = "INT NOT NULL CHECK (star_number BETWEEN 1 AND 5)",
             insertable = false)
     private byte starNumber;
 
@@ -37,6 +36,8 @@ public class Hotel {
     private String address = "N/A";
 
     @OneToOne
+    // JointColumn Permet d'avoir le contrôle sur le nom de la ForeignKey
+    @JoinColumn(name = "manager_id", foreignKey = @ForeignKey(name = "FK_HOTEL_MANAGER_ID"))
     private Manager owner;
 
     @OneToMany(mappedBy = "hotel")
