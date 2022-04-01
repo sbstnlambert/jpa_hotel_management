@@ -23,7 +23,7 @@ public class Manager {
     @Column(nullable = false, name = "manager_surname", length = 50)
     private String surname;
 
-    @Column(nullable = true, updatable = false, columnDefinition = "DATE")
+    @Column(nullable = true, columnDefinition = "DATE")
     private LocalDate beginCareerOn;
 
     @OneToOne(mappedBy = "owner")
