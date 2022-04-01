@@ -35,6 +35,7 @@ public class Room {
     private float price;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Hotel hotel;
 
     @ManyToMany
