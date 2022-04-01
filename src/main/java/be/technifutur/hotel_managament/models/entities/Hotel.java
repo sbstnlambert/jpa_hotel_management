@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,18 +20,24 @@ public class Hotel {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(
+            nullable = false,
+            columnDefinition = "INT NOT NULL CHECK (star_number BETWEEN 1 AND 5",
+            insertable = false)
     private byte starNumber;
 
     @Column(nullable = false, name = "hotel_name")
     private String name;
 
-    @Column(nullable = false)
-    private String address;
+    // Adresse
+    // Disons que nous voulons lui passer une valeur par défaut ("N/A")
+    // Afin de le remplacer par sa valeur par défaut qui est NULL jusqu'à présent
+    @Column(nullable = false, columnDefinition = "VARCHAR(200) DEFAULT 'N/A'")
+    private String address = "N/A";
 
     @OneToOne
     private Manager owner;
 
-    @OneToOne
-    private Room room;
+    @OneToMany(mappedBy = "hotel")
+    private List<Room> rooms;
 }
