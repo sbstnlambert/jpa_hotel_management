@@ -41,7 +41,11 @@ public class Room {
     @JoinTable(
             name = "visitor",
             joinColumns = @JoinColumn(name = "room_id"),
-            inverseJoinColumns = @JoinColumn(name = "visitor_id")
+            inverseJoinColumns = @JoinColumn(name = "visitor_id"),
+            uniqueConstraints = @UniqueConstraint(
+                    name = "UNIQUE_visitor_room",
+                    columnNames = { "room_id", "visitor_id" }
+            )
     )
     private List<Client> clients = new ArrayList<>();
 }
