@@ -19,8 +19,7 @@ public class Hotel {
     private Long id;
 
     @Column(
-            columnDefinition = "INT NOT NULL CHECK (star_number BETWEEN 1 AND 5)",
-            insertable = false)
+            columnDefinition = "INT NOT NULL CHECK (star_number BETWEEN 1 AND 5)")
     private byte starNumber;
 
     @Column(nullable = false, name = "hotel_name")
