@@ -17,6 +17,7 @@ import java.util.List;
 // On peut utiliser RestController car
 // on a ajouté la dépendance spring boot starter dans pom.xml
 @RestController
+@RequestMapping("/manager")
 public class ManagerController {
 
     private final ManagerService service;
@@ -29,7 +30,7 @@ public class ManagerController {
 //    @RequestMapping(method = RequestMethod.GET, path = "/manager")
     // Au lieu du RequestMapping, on peut utiliser le GetMapping
     // qui est un RequestMapping avec directement un RequestMethod.GET
-    @GetMapping("/manager")
+    @GetMapping
     public List<ManagerDTO> getAll() {
         return service.getAll();
     }
@@ -37,7 +38,7 @@ public class ManagerController {
     // (VERB) GET - http://localhost:8080/manager/id
     // Les accolades d'id servent à lier le paramètre du lien au paramètre de la méthode
     // portant l'annotation PathVariable
-    @GetMapping("/manager/{id}")
+    @GetMapping("/{id}")
 
     // PathVariable détermine que le paramètre de la méthode doit être lié au paramètre du lien
     // ResponseEntity va gérer l'exception si aucun id n'existe
@@ -57,20 +58,20 @@ public class ManagerController {
     //              - http://localhost:8080/manager/add
     // Je veux que les deux soient actives en même temps
     // NB : 'path =' est facultative
-    @PostMapping(path = { "/manager", "/manager/add" })
+    @PostMapping(path = { "", "/add" })
     // RequestBody car on veut le formulaire dans le body
     public ResponseEntity<Object> insert(@RequestBody ManagerForm form) {
             return ResponseEntity.ok(service.insert(form));
     }
 
     // (VERB) PUT - http://localhost:8080/manager
-    @PutMapping("/manager/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ManagerDTO> update(@RequestBody ManagerForm form, @PathVariable Long id) {
             return ResponseEntity.ok(service.update(id, form));
     }
 
     // (VERB) DELETE - http://localhost:8080/manager/id
-    @DeleteMapping("/manager/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<ManagerDTO> delete(@PathVariable Long id) {
             return ResponseEntity.ok(service.delete(id));
     }
