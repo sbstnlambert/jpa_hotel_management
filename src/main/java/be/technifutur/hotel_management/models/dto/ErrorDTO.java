@@ -1,11 +1,13 @@
 package be.technifutur.hotel_management.models.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Getter
+@Builder
 public class ErrorDTO {
 
     private final String message;
