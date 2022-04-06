@@ -76,17 +76,4 @@ public class ManagerController {
             return ResponseEntity.ok(service.delete(id));
     }
 
-    @ExceptionHandler(ElementNotFoundException.class)
-    public ResponseEntity<ErrorDTO> handleElementNotFound(ElementNotFoundException e, HttpServletRequest req) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(
-                        ErrorDTO.builder()
-                                .message(e.getMessage())
-                                .method(HttpMethod.resolve(req.getMethod()))
-                                .status(404)
-                                .uri(req.getRequestURI())
-                                .build()
-                );
-    }
-
 }
