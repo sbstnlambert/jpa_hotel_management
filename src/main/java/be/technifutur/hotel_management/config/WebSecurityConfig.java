@@ -1,7 +1,9 @@
 package be.technifutur.hotel_management.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -13,6 +15,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 // Ainsi qu'activer la sécurité pour que je puisse faire des modifications avec EnableWebSecurity
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(
+        prePostEnabled = true, // Donne accès à preauthorized - permet @PreAuthorize("permitAll()") dans DemoController
+        securedEnabled = true, // Donne accès à secured - permet @Secured("ROLE_USER") dans DemoController
+        jsr250Enabled = true // Donne accès à role
+)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     // Après avoir créé PasswordEncryptionConfig
@@ -30,11 +37,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("user")
                 .password(encoder.encode("userpassword"))
-                .authorities("USER")
+                // Les rôles donnent accès aux authorities, pas l'inverse
+//                .authorities("USER")
+                .roles("USER")
                 .and()
                 .withUser("admin")
                 .password(encoder.encode("adminpassword"))
-                .authorities("USER", "ADMIN");
+//                .authorities("USER", "ADMIN")
+                .roles("USER", "ADMIN");
                 // => Pas bien car on doit prendre l'habitude de ne pas donner nos mdp en dur, au clair
                 // GOTO create PasswordEncryptionConfig
     }
@@ -60,9 +70,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/demo/for-all")
                 // L'ordre de déclaration est important
                 // Du plus spécifique au plus général - les 3 premières étant interchangeable car au même niveau
-                .antMatchers("/demo/for-connected").authenticated()
-                .antMatchers("/demo/for-user").hasAuthority("USER")
-                .antMatchers("/demo/for-admin").hasAuthority("ADMIN")
+                // Pour les requêtes en GET, il faut être authentifié
+//                .antMatchers(HttpMethod.GET, "/hotel/**").authenticated()
+//                // Toute autorité (user ou admin) peut GET les gérants
+//                .antMatchers(HttpMethod.GET, "/manager/**").hasAnyAuthority("USER", "ADMIN")
+//                // Peut être écrit avec role aussi, fait la même chose :
+////                .antMatchers(HttpMethod.GET, "/manager/**").hasAnyRole("ROLE_USER", "ROLE_ADMIN")
+//                // POST-DELETE-PUT-PATCH ne peuvent être effectués que par l'admin
+//                .antMatchers(HttpMethod.POST).hasAuthority("ADMIN")
+//                .antMatchers(HttpMethod.DELETE).hasAuthority("ADMIN")
+//                .antMatchers(HttpMethod.PUT).hasAuthority("ADMIN")
+//                .antMatchers(HttpMethod.PATCH).hasAuthority("ADMIN")
+//                .antMatchers("/demo/for-connected").authenticated()
+//                .antMatchers("/demo/for-user").hasAuthority("USER")
+//                .antMatchers("/demo/for-admin").hasAuthority("ADMIN")
                 .anyRequest().permitAll();
+
+        // ... Etc. Avec beaucoup d'accès, on remarque que ça peut générer énormément de lignes
+        // On peut donc indiquer @EnableGlobalMethodSecurity en annotation de la classe
+
+        // Soit avec des méthodes comme commenté ci-dessus
+        // Soit avec des annotations PreAuthorize-Secured-RolesAllowed comme dans DemoController
+        // Conseil : sécurités générales ici
+        // Conseil : sécurités spécifiques avec les annotations dans DemoController
     }
 }
