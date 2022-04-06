@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 
 // On peut utiliser RestController car
@@ -60,7 +61,8 @@ public class ManagerController {
     // NB : 'path =' est facultative
     @PostMapping(path = { "", "/add" })
     // RequestBody car on veut le formulaire dans le body
-    public ResponseEntity<Object> insert(@RequestBody ManagerForm form) {
+    // VALIDATION : Je spécifie que le form doit être valide
+    public ResponseEntity<Object> insert(@Valid @RequestBody ManagerForm form) {
             return ResponseEntity.ok(service.insert(form));
     }
 
