@@ -48,6 +48,7 @@ public class HotelMapper {
 
         return HotelDTO.builder()
                 .id(entity.getId())
+                .starNumber(entity.getStarNumber())
                 .name(entity.getName())
                 .address(entity.getAddress())
                 .rooms(rooms)
