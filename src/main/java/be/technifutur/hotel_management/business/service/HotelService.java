@@ -14,6 +14,7 @@ public interface HotelService {
     // READ
     public HotelDTO getOne(Long id);
     public List<HotelDTO> getAll();
+    public List<HotelDTO> getStars(byte starNumber);
     
     // UPDATE
     public HotelDTO update(Long id, HotelForm form);
