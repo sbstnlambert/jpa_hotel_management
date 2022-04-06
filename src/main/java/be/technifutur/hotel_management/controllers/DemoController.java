@@ -3,17 +3,15 @@ package be.technifutur.hotel_management.controllers;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/demo")
 public class DemoController {
 
     // <?> revient à dire <Object>
     // getHeaders récupère tous les headers
-    @GetMapping("/demo/headers")
+    @GetMapping("/headers")
     public ResponseEntity<?> getHeaders(@RequestHeader HttpHeaders headers) {
         headers.forEach((key, value) -> {
             System.out.println(key + " : " + value.get(0));
@@ -22,13 +20,13 @@ public class DemoController {
     }
 
     // getHeader en récupère un en particulier
-    @GetMapping("/demo/header")
+    @GetMapping("/header")
     public ResponseEntity<?> getHeader(@RequestHeader(HttpHeaders.HOST) String host) {
         System.out.println(host);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/demo/params")
+    @GetMapping("/params")
     public ResponseEntity<?> getParams(@RequestParam MultiValueMap<String, String> params) {
         params.forEach((key, value) -> {
             System.out.print(key + " : ");
@@ -37,10 +35,32 @@ public class DemoController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/demo/param")
+    @GetMapping("/param")
     public ResponseEntity<?> getParam(@RequestParam int size) {
         System.out.println("size: " + size);
         return ResponseEntity.ok().build();
+    }
+
+    // SECURITE
+
+    @GetMapping("/for-all")
+    public String getForAll() {
+        return "For all";
+    }
+
+    @GetMapping("/for-connected")
+    public String getForConnected() {
+        return "For connected";
+    }
+
+    @GetMapping("/for-user")
+    public String getForUser() {
+        return "For user";
+    }
+
+    @GetMapping("/for-admin")
+    public String getForAdmin() {
+        return "For admin";
     }
 
 }
