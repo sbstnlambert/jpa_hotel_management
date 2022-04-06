@@ -47,7 +47,7 @@ public class HotelServiceImpl implements HotelService {
     public List<HotelDTO> getStars(byte starNumber) {
         return repository.findAll()
                 .stream()
-                .filter(hotel -> hotel.getStarNumber() == starNumber)
+                .filter(hotel -> hotel.getStarNumber() >= starNumber)
                 .map(mapper::entityToDTO)
                 .toList();
     }
