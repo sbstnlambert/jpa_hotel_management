@@ -6,9 +6,11 @@ import be.technifutur.hotel_management.models.dto.HotelDTO;
 import be.technifutur.hotel_management.models.entities.Hotel;
 import be.technifutur.hotel_management.models.forms.HotelForm;
 import be.technifutur.hotel_management.repositories.HotelRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class HotelServiceImpl implements HotelService {
 
     private final HotelRepository repository;
@@ -37,6 +39,15 @@ public class HotelServiceImpl implements HotelService {
     public List<HotelDTO> getAll() {
         return repository.findAll()
                 .stream()
+                .map(mapper::entityToDTO)
+                .toList();
+    }
+
+    @Override
+    public List<HotelDTO> getStars(byte starNumber) {
+        return repository.findAll()
+                .stream()
+                .filter(hotel -> hotel.getStarNumber() == starNumber)
                 .map(mapper::entityToDTO)
                 .toList();
     }
