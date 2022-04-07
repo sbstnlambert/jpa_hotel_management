@@ -6,7 +6,7 @@ import be.technifutur.hotel_management.exceptions.ElementNotFoundException;
 import be.technifutur.hotel_management.models.dto.HotelDTO;
 import be.technifutur.hotel_management.models.entities.Hotel;
 import be.technifutur.hotel_management.models.forms.HotelForm;
-import be.technifutur.hotel_management.repositories.HotelRepository;
+import be.technifutur.hotel_management.data.repositories.HotelRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

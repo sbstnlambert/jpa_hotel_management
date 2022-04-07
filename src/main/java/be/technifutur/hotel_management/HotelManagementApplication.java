@@ -1,9 +1,9 @@
 package be.technifutur.hotel_management;
 
-import be.technifutur.hotel_management.repositories.ClientRepository;
-import be.technifutur.hotel_management.repositories.HotelRepository;
-import be.technifutur.hotel_management.repositories.ManagerRepository;
-import be.technifutur.hotel_management.repositories.RoomRepository;
+import be.technifutur.hotel_management.data.repositories.ClientRepository;
+import be.technifutur.hotel_management.data.repositories.HotelRepository;
+import be.technifutur.hotel_management.data.repositories.ManagerRepository;
+import be.technifutur.hotel_management.data.repositories.RoomRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;

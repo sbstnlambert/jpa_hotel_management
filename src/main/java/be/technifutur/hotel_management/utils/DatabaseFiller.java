@@ -2,9 +2,8 @@ package be.technifutur.hotel_management.utils;
 
 import be.technifutur.hotel_management.models.entities.Hotel;
 import be.technifutur.hotel_management.models.entities.Manager;
-import be.technifutur.hotel_management.models.entities.Room;
-import be.technifutur.hotel_management.repositories.HotelRepository;
-import be.technifutur.hotel_management.repositories.ManagerRepository;
+import be.technifutur.hotel_management.data.repositories.HotelRepository;
+import be.technifutur.hotel_management.data.repositories.ManagerRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
