@@ -69,6 +69,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement()
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
+        // Solution au fait que quand on accède à la DB avec l'user,
+        // les frames de ma DB ne s'affichent pas : on voit en console le X Frame Options = DENY
+        // Je modifie donc les headers de base, plus particulièrement frameOptions, que je désactive
+        // Désormais, je lance ma DB et je n'ai plus le problème de frames
+        http.headers()
+                .frameOptions()
+                .disable();
+                // Je peux jouer avec les méthodes de frameOptions()
+//                        .cacheControl().disable()
+//                        .permissionsPolicy().policy("my policy");
+
         // Processus d'autorisation ou non à différents éléments
         // D'abord, je permets tout à tout le monde
         http.authorizeRequests()
