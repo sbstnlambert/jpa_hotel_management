@@ -1,6 +1,6 @@
 package be.technifutur.hotel_management.config;
 
-import be.technifutur.hotel_management.models.User;
+import be.technifutur.hotel_management.models.entities.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetailsService;
