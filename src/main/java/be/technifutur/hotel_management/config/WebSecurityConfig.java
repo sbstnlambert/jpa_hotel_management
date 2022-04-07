@@ -82,25 +82,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Processus d'autorisation ou non à différents éléments
         // D'abord, je permets tout à tout le monde
-        http.authorizeRequests()
-//                .antMatchers("/demo/for-all")
-                // L'ordre de déclaration est important
-                // Du plus spécifique au plus général - les 3 premières étant interchangeable car au même niveau
-                // Pour les requêtes en GET, il faut être authentifié
-//                .antMatchers(HttpMethod.GET, "/hotel/**").authenticated()
-//                // Toute autorité (user ou admin) peut GET les gérants
-//                .antMatchers(HttpMethod.GET, "/manager/**").hasAnyAuthority("USER", "ADMIN")
-//                // Peut être écrit avec role aussi, fait la même chose :
-////                .antMatchers(HttpMethod.GET, "/manager/**").hasAnyRole("ROLE_USER", "ROLE_ADMIN")
-//                // POST-DELETE-PUT-PATCH ne peuvent être effectués que par l'admin
-//                .antMatchers(HttpMethod.POST).hasAuthority("ADMIN")
-//                .antMatchers(HttpMethod.DELETE).hasAuthority("ADMIN")
-//                .antMatchers(HttpMethod.PUT).hasAuthority("ADMIN")
-//                .antMatchers(HttpMethod.PATCH).hasAuthority("ADMIN")
-//                .antMatchers("/demo/for-connected").authenticated()
-//                .antMatchers("/demo/for-user").hasAuthority("USER")
-//                .antMatchers("/demo/for-admin").hasAuthority("ADMIN")
-                .anyRequest().permitAll();
+//        http.authorizeRequests()
+////                .antMatchers("/demo/for-all")
+//                // L'ordre de déclaration est important
+//                // Du plus spécifique au plus général - les 3 premières étant interchangeable car au même niveau
+//                // Pour les requêtes en GET, il faut être authentifié
+////                .antMatchers(HttpMethod.GET, "/hotel/**").authenticated()
+////                // Toute autorité (user ou admin) peut GET les gérants
+////                .antMatchers(HttpMethod.GET, "/manager/**").hasAnyAuthority("USER", "ADMIN")
+////                // Peut être écrit avec role aussi, fait la même chose :
+//////                .antMatchers(HttpMethod.GET, "/manager/**").hasAnyRole("ROLE_USER", "ROLE_ADMIN")
+////                // POST-DELETE-PUT-PATCH ne peuvent être effectués que par l'admin
+////                .antMatchers(HttpMethod.POST).hasAuthority("ADMIN")
+////                .antMatchers(HttpMethod.DELETE).hasAuthority("ADMIN")
+////                .antMatchers(HttpMethod.PUT).hasAuthority("ADMIN")
+////                .antMatchers(HttpMethod.PATCH).hasAuthority("ADMIN")
+////                .antMatchers("/demo/for-connected").authenticated()
+////                .antMatchers("/demo/for-user").hasAuthority("USER")
+////                .antMatchers("/demo/for-admin").hasAuthority("ADMIN")
+//                .anyRequest().permitAll();
 
         // ... Etc. Avec beaucoup d'accès, on remarque que ça peut générer énormément de lignes
         // On peut donc indiquer @EnableGlobalMethodSecurity en annotation de la classe

@@ -1,10 +1,13 @@
 package be.technifutur.hotel_management.utils;
 
+import be.technifutur.hotel_management.data.repositories.UserRepository;
 import be.technifutur.hotel_management.models.entities.Hotel;
 import be.technifutur.hotel_management.models.entities.Manager;
 import be.technifutur.hotel_management.data.repositories.HotelRepository;
 import be.technifutur.hotel_management.data.repositories.ManagerRepository;
+import be.technifutur.hotel_management.models.entities.User;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -14,15 +17,28 @@ public class DatabaseFiller implements InitializingBean {
 
     private final HotelRepository hotelRepository;
     private final ManagerRepository managerRepository;
+    private final UserRepository userRepository;
+    private final PasswordEncoder encoder;
 
-    public DatabaseFiller (HotelRepository hotelRepository, ManagerRepository managerRepository) {
+    public DatabaseFiller(HotelRepository hotelRepository, ManagerRepository managerRepository, UserRepository userRepository, PasswordEncoder encoder) {
         this.hotelRepository = hotelRepository;
         this.managerRepository = managerRepository;
+        this.userRepository = userRepository;
+        this.encoder = encoder;
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
+        setupHotelManager();
 
+        User uChristopheC = new User();
+        uChristopheC.setUsername("ChristopheC");
+        uChristopheC.setPassword(encoder.encode("cc-password"));
+
+        userRepository.save(uChristopheC);
+    }
+
+    private void setupHotelManager() {
         Manager l = Manager.builder()
                 .beginCareerOn(LocalDate.now())
                 .surname("Lionel")

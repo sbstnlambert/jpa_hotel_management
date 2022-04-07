@@ -9,6 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class User implements UserDetails {
     // LAZY = Les rôles ne seront récupérés que lorsque je fais getRole()
     // Ce que je ne veux pas
     @ElementCollection(fetch = FetchType.EAGER)
-    List<String> roles;
+    List<String> roles = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

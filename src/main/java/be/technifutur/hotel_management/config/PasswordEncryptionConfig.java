@@ -16,8 +16,8 @@ public class PasswordEncryptionConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return username -> new User();
-    }
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        return username -> new User();
+//    }
 }
