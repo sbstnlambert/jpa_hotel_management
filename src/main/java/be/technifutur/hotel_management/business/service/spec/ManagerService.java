@@ -1,4 +1,4 @@
-package be.technifutur.hotel_management.business.service;
+package be.technifutur.hotel_management.business.service.spec;
 
 import be.technifutur.hotel_management.models.dto.ManagerDTO;
 import be.technifutur.hotel_management.models.forms.ManagerForm;
