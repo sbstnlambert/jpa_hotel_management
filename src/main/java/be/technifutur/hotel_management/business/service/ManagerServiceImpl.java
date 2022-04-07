@@ -1,6 +1,7 @@
 package be.technifutur.hotel_management.business.service;
 
 import be.technifutur.hotel_management.business.mapper.ManagerMapper;
+import be.technifutur.hotel_management.business.service.spec.ManagerService;
 import be.technifutur.hotel_management.exceptions.ElementNotFoundException;
 import be.technifutur.hotel_management.models.dto.ManagerDTO;
 import be.technifutur.hotel_management.models.entities.Manager;
@@ -8,7 +9,6 @@ import be.technifutur.hotel_management.models.forms.ManagerForm;
 import be.technifutur.hotel_management.repositories.ManagerRepository;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.Element;
 import java.util.List;
 
 @Service

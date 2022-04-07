@@ -1,8 +1,8 @@
 package be.technifutur.hotel_management.business.service;
 
+import be.technifutur.hotel_management.business.service.spec.ManagerService;
 import be.technifutur.hotel_management.models.dto.ManagerDTO;
 import be.technifutur.hotel_management.models.forms.ManagerForm;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

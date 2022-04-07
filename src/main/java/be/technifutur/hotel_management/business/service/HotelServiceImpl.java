@@ -1,6 +1,7 @@
 package be.technifutur.hotel_management.business.service;
 
 import be.technifutur.hotel_management.business.mapper.HotelMapper;
+import be.technifutur.hotel_management.business.service.spec.HotelService;
 import be.technifutur.hotel_management.exceptions.ElementNotFoundException;
 import be.technifutur.hotel_management.models.dto.HotelDTO;
 import be.technifutur.hotel_management.models.entities.Hotel;

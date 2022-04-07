@@ -1,17 +1,12 @@
 package be.technifutur.hotel_management.controllers;
 
-import be.technifutur.hotel_management.business.service.ManagerService;
-import be.technifutur.hotel_management.exceptions.ElementNotFoundException;
-import be.technifutur.hotel_management.models.dto.ErrorDTO;
+import be.technifutur.hotel_management.business.service.spec.ManagerService;
 import be.technifutur.hotel_management.models.dto.ManagerDTO;
-import be.technifutur.hotel_management.models.entities.Manager;
 import be.technifutur.hotel_management.models.forms.ManagerForm;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
